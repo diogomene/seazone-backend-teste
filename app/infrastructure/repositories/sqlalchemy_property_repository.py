@@ -98,15 +98,19 @@ class SQLAlchemyPropertyRepository(IPropertyRepository):
                     or_(
                         and_(
                             Reservation.start_date <= start_date,
-                            Reservation.end_date > start_date
+                            Reservation.end_date >= start_date
                         ),
                         and_(
-                            Reservation.start_date < end_date,
+                            Reservation.start_date <= end_date,
                             Reservation.end_date >= end_date
                         ),
                         and_(
                             Reservation.start_date >= start_date,
                             Reservation.end_date <= end_date
+                        ),
+                        and_(
+                            Reservation.start_date <= start_date,
+                            Reservation.end_date >= end_date
                         )
                     )
                 )
