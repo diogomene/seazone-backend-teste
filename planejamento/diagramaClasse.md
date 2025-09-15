@@ -33,6 +33,7 @@ direction TB
 	    Date fim
 	    int numeroOcupantes
         boolean ativa
+        Decimal valorTotal
     }
 
     Reserva --* Propriedade
