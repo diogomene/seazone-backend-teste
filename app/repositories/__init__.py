@@ -1,0 +1,1 @@
+"""Repositories package - interfaces (ports) for data access."""
