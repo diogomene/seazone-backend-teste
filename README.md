@@ -47,11 +47,14 @@ alembic upgrade head
 
 ### 5. Executar aplicação
 ```bash
-# Modo desenvolvimento
+# Modo desenvolvimento (nesse caso o postgres deve ser iniciado conforme passo anterior)
 uvicorn app.api.main:app --reload
 
 # Ou usando Docker Compose (aplicação + PostgreSQL)
 docker-compose --env-file .env up --build
+
+# Caso não tenha aplicado as migrations, deve-se aplicar
+alembic upgrade head
 ```
 
 ## Uso da API
