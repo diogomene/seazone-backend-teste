@@ -36,24 +36,26 @@ cp .env.example .env
 nano .env
 ```
 
-### 4. Inicializar infraestrutura com Docker
+### 4. Executar aplicação
+
+### 4.1 Banco de dados em Docker + Aplicação sem Docker
 ```bash
 # Iniciar PostgreSQL
 docker-compose --env-file .env up --build postgres   
 
-# Aplicar migrations
+# Aplicar migrations (necessário estar utilizando ambiente virtual - conforme passo 2)
 alembic upgrade head
+
+# Iniciar aplicação python
+uvicorn app.api.main:app --reload
 ```
 
-### 5. Executar aplicação
+### 4.1 Banco de dados e Aplicação em Docker
 ```bash
-# Modo desenvolvimento (nesse caso o postgres deve ser iniciado conforme passo anterior)
-uvicorn app.api.main:app --reload
-
-# Ou usando Docker Compose (aplicação + PostgreSQL)
+# Docker Compose (Iniciar aplicação + PostgreSQL)
 docker-compose --env-file .env up --build
 
-# Caso não tenha aplicado as migrations, deve-se aplicar
+# Aplicar migrations (necessário estar utilizando ambiente virtual - conforme passo 2)
 alembic upgrade head
 ```
 
