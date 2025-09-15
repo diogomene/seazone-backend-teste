@@ -17,10 +17,13 @@ direction TB
 	    Decimal precoNoite
     }
 
-    class Localizacao {
+    class Endereco {
 	    String bairro
 	    String cidade
-	    String siglaEstado
+	    String estado
+        String numero
+        String logradouro
+        String pais
     }
 
     class Cliente {
@@ -38,5 +41,5 @@ direction TB
 
     Reserva --* Propriedade
     Cliente -- Reserva : realiza
-    Localizacao -- Propriedade
+    Endereco -- Propriedade
 ```
