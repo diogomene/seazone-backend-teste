@@ -21,3 +21,4 @@ class Property(Base):
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
 
     address = relationship("Address", back_populates="properties")
+    reservations = relationship("Reservation", back_populates="property")

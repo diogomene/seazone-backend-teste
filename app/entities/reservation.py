@@ -22,5 +22,5 @@ class Reservation(Base):
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
     
-    property = relationship("Property")
-    client = relationship("Client")
+    property = relationship("Property", back_populates="reservations")
+    client = relationship("Client", back_populates="reservations")
